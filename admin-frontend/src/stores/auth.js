@@ -5,14 +5,17 @@ import api from '@/utils/api'
 export const useAuthStore = defineStore('auth', () => {
   const user = ref(null)
   const token = ref(localStorage.getItem('admin-token') || null)
+  const initialized = ref(false)
 
-  const isAuthenticated = computed(() => !!token.value)
+  const isAuthenticated = computed(() => !!token.value && !!user.value)
   const isAdmin = computed(() => user.value?.is_admin || false)
 
-  // 初始化时从localStorage恢复token
-  if (token.value) {
-    api.defaults.headers.common['Authorization'] = `Bearer ${token.value}`
-    checkAuth()
+  async function init() {
+    if (token.value && !initialized.value) {
+      api.defaults.headers.common['Authorization'] = `Bearer ${token.value}`
+      await checkAuth()
+    }
+    initialized.value = true
   }
 
   async function login(username, password) {
@@ -68,6 +71,8 @@ export const useAuthStore = defineStore('auth', () => {
     token,
     isAuthenticated,
     isAdmin,
+    initialized,
+    init,
     login,
     logout,
     checkAuth
