@@ -95,9 +95,14 @@ class Settings(BaseSettings):
     UPSTREAM_TIMEOUT: int = 300
     UPSTREAM_CONNECT_TIMEOUT: int = 30
     
+    # Nginx（仅用于 docker-compose，API 不使用）
+    NGINX_WORKER_PROCESSES: str = "auto"
+    NGINX_WORKER_CONNECTIONS: int = 1024
+    
     class Config:
         env_file = ".env"
         case_sensitive = True
+        extra = "ignore"  # 忽略额外的环境变量
 
 
 settings = Settings()
