@@ -1,7 +1,7 @@
 """
 用户模型
 """
-from sqlalchemy import Column, String, Boolean, Text, Integer, Float
+from sqlalchemy import Column, String, Boolean, Text, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from app.models.base import BaseModel
 
@@ -31,7 +31,7 @@ class APIKey(BaseModel):
     __tablename__ = "api_keys"
     
     key = Column(String(255), unique=True, index=True, nullable=False)
-    user_id = Column(Integer, nullable=False, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
     name = Column(String(100), nullable=True)  # Key名称/备注
     is_active = Column(Boolean, default=True, nullable=False)
     
