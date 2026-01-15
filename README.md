@@ -181,3 +181,12 @@ curl https://your-domain.com/v1/chat/completions \
 - [ ] HTTPS 证书已配置
 - [ ] 防火墙规则已设置
 - [ ] 监控告警已配置
+
+
+2026-01-15 01:36:35 - app.utils.logger - INFO - 管理员账号：
+2026-01-15 01:36:35 - app.utils.logger - INFO -   用户名: admin
+2026-01-15 01:36:35 - app.utils.logger - INFO -   密码: admin123
+2026-01-15 01:36:35 - app.utils.logger - INFO - 
+2026-01-15 01:36:35 - app.utils.logger - INFO - 普通用户：
+2026-01-15 01:36:35 - app.utils.logger - INFO -   用户名: test
+2026-01-15 01:36:35 - app.utils.logger - INFO -   密码: test123
