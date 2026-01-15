@@ -14,7 +14,7 @@ from app.models.user import User
 from app.config import settings
 from app.utils.logger import logger
 
-router = APIRouter()
+router = APIRouter(prefix="/api")
 security = HTTPBearer()
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

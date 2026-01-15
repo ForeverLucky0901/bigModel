@@ -14,7 +14,7 @@ from app.api.auth import get_current_user
 from app.utils.logger import logger
 import secrets
 
-router = APIRouter(prefix="/admin", tags=["admin"])
+router = APIRouter(prefix="/api/admin", tags=["admin"])
 
 
 def require_admin(current_user: User = Depends(get_current_user)):
